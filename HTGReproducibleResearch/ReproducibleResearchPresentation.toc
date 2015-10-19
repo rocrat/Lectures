@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{The Vision}{22}{0}{2}
+\beamer@subsectionintoc {2}{1}{The Tools}{36}{0}{2}
+\beamer@sectionintoc {3}{Conclusions}{59}{0}{3}

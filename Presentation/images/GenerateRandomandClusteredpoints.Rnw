@@ -1,0 +1,29 @@
+\documentclass{article}
+
+\begin{document}
+
+<<makedistforbiomathpresent>>=
+require(spdep)
+require(spatstat)
+rho<-0.95
+N<-200
+x.coord<-rbeta(N,1,10)
+y.coord<-rbeta(N,1,20)
+points<-cbind(x.coord,y.coord)
+rm(x.coord,y.coord)
+e<-rnorm(N,0,2)
+dnb<-dnearneigh(points,0,50) #neighbourhood contiguity by distance
+dsts<-nbdists(dnb,points) #spatial link distance measures
+idw<-lapply(dsts,function(x) 1/x) #inverse of distance measures
+lw<-nb2listw(dnb,glist=idw,style="W")
+inv<-invIrW(lw,.999)
+GC<-inv%*%e
+GC2<-GC-min(GC)
+sim1<-cbind(points,GC2)
+sim1<-as.data.frame(sim1)
+names(sim1)<-c("x","y","GC")
+
+ggplot(data=sim1,aes(x=x,y=y,z=GC))+geom_point(aes(size=GC))
+@
+
+\end{document}

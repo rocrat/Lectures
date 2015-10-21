@@ -74,7 +74,7 @@
 \begin{itemize}
 \item Introduction
 \bigskip
-\item Example document and example application 
+\item Examples 
 \bigskip
 \item Nuts and Bolts
 \end{itemize}
@@ -86,7 +86,7 @@
 Interactive documents and applications are graphical user interfaces which run analyses in the background.
 \bigskip
 \begin{itemize}
-\item Allow user to interact with analyses
+\item Allow user to define the inputs for analyses
 \bigskip
 \item Run pre-defined analyses
 \bigskip
@@ -115,7 +115,7 @@ Interactive Documents:
 \item Provide a tool to both inform \emph{and} educate
 \smallskip
 \pause
-\item Allow users to ask and answer their own questions
+\item Allow consumers to ask and answer their own questions
   \begin{itemize}
   \item Facilitate discovery
   \item Understand the ``why" and not just the ``what"
@@ -124,7 +124,7 @@ Interactive Documents:
 \end{frame}
 
 \begin{frame}{How are interactive documents and applications beneficial?}
-Other potential uses:
+Other uses:
 \bigskip
 \begin{itemize}
 \item Teaching
@@ -138,7 +138,7 @@ Other potential uses:
 \end{frame}
 
 
-\begin{frame}{Interactive Applications}
+\begin{frame}{Interactive Applications Basics}
 Written in R:
 \begin{itemize}
 \item Can do anything you can do in R
@@ -153,7 +153,7 @@ Written in R:
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Interactive Reports}
+\begin{frame}{Interactive Reports Basics}
 Written in Rmarkdown:
 \begin{itemize}
 \item Combines report text and code into a single document
@@ -167,7 +167,7 @@ Written in Rmarkdown:
 \item Can create a static document from interactive one
 \smallskip
 \item Document must be hosted
-\pause
+
   \begin{itemize}
   \item On the web
   \item Locally as application
@@ -200,7 +200,7 @@ I will be discussing some details of creating these type of applications and doc
 \end{frame}
 
 \begin{frame}{Building an Application}
-Applications depend on two main objects:
+Applications depend on two main list-like objects:
 \bigskip
 \begin{itemize}
 \item input
@@ -244,12 +244,53 @@ Applications use two main functions from the shiny package:
 \end{frame}
 
 \begin{frame}{Pre-packaged Inputs}
-
+Many pre-defined inputs to use:
+\begin{itemize}
+\smallskip
+\item textInput()
+\smallskip
+\item numericInput()
+\smallskip
+\item checkboxInput()
+\smallskip
+\item sliderInput()
+\smallskip
+\item selectInput()
+\smallskip
+\item fileInput()
+\smallskip
+\item tableInput()
+\smallskip
+\item Many more...
+\end{itemize}
+\bigskip
+Users can also define their own inputs with HTML, java, etc.
 \end{frame}
 
 
-\begin{frame}{Pre-pacakged Outputs}
-
+\begin{frame}{Pre-packaged Outputs}
+An equally large number of predefined outputs for rendering results
+\smallskip
+\begin{itemize}
+\item textOutput()
+\smallskip
+\item plotOutput()
+\smallskip
+\item File downloads
+\smallskip
+\item etc.
+\end{itemize}
+\smallskip
+Outputs are also customizable.\\
+\pause
+\bigskip
+Two steps for rendering outputs:
+\begin{itemize}
+\smallskip
+\item[1.] To assign to the output ``list": render...() (renderText, renderTable, etc.)
+\smallskip
+\item[2.] To display in the application: ...Output() (textOutput, tableOutput, etc.)
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Reactivity}
@@ -267,6 +308,30 @@ The analysis must respond to updated user inputs.  This is known as \textbf{reac
 \bigskip
 \item All manipulations of reactive values must be done inside the reactive environment
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Reactivity}
+\begin{center}
+\includegraphics[scale=.4]{./Figures/ReactiveComponents}\\
+\includegraphics[scale=.4]{./Figures/ReactiveModel}
+\end{center}
+\tiny{From Rstudio folks}
+\end{frame}
+
+\begin{frame}{Reactivity: Execution Scheduling}
+\begin{center}
+\includegraphics[scale=.4]{./Figures/InitialState}\\
+\includegraphics[scale=.4]{./Figures/InputChange}
+\end{center}
+\tiny{From Rstudio folks}
+\end{frame}
+
+\begin{frame}{Reactivity: Execution Scheduling}
+\begin{center}
+\includegraphics[scale=.4]{./Figures/Reexecuting}\\
+\includegraphics[scale=.4]{./Figures/RequestValue}
+\end{center}
+\tiny{From Rstudio folks}
 \end{frame}
 
 \begin{frame}{Reactivity}
@@ -328,6 +393,20 @@ Interactive document is a special case of an application
 \end{itemize}  
 \end{frame}
 
+\begin{frame}{Building an Interactive Document}
+Rmarkdown:
+\bigskip
+\begin{itemize}
+\item Very simple markup (no need to know HTML)
+\bigskip 
+\item Can augment with HTML (or other `languages')
+\bigskip
+\item Easy to switch outputs
+\bigskip
+\item Reproducible and limits errors
+\end{itemize}
+\end{frame}
+
 
 \begin{frame}{Building an Interactive Document}
 Some differences from a standard application:
@@ -337,7 +416,7 @@ Some differences from a standard application:
 \item Only 1 file (no separate server.R and ui.R files)
 \pause
 \bigskip
-\item Use inputPanel instead of shinyUI() function
+\item Use inputPanel() instead of shinyUI() function
 \bigskip
 \pause
 \item Outputs are rendered in 2 stages:

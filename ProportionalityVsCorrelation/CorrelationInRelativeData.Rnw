@@ -178,14 +178,64 @@ Take a 3 component example: $Total = c_1 + c_2 + c_3$
 \begin{frame}{Correlations on Relative Data}
 Yes, I am going to show a slide show during a slide show.\\
 \bigskip
-\href{http://www.slideshare.net/AustralianBioinformatics/dont-correlate-proportions}{David Lovell scaring you about correlating proportions}
+\href{http://www.slideshare.net/AustralianBioinformatics/dont-correlate-proportions}{David Lovell scaring you about correlating relative data}
+\end{frame}
+
+\begin{frame}{A little background on the proposed alternative:\\ Model 2 regression}
+Also known as Standardized Major Axis (SMA) Regression 
+\bigskip
+\begin{itemize}
+\item Traditional regression has 1 random variable: $Y = \beta_0 + \beta X + \epsilon$
+  \begin{itemize}
+  \item $X$ is considered ``fixed" so has no random error ($\epsilon$)
+  \end{itemize}
+\bigskip
+\pause
+\item SMA regression gives the relationship between to random variables
+  \begin{itemize}
+  \item Accounts for the random error in both variables
+  \item Slope estimate: $\beta = \frac{sd(Y_1)}{sd(Y_2)}$
+  \end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}{The proposed alternative to correlation}
+The authors propose ``proportionality", $\phi$, as a substitute for correlation.
+\begin{itemize}
+\item They start with Aitchison's log-ratio variance: 
+\small{
+$$var(log(x/y)) = var(logx - logy)$$
+}
+\pause
+\item They factor log-ratio variance using the properties of variance:
+\small{
+$$= var(log (x)) \left(1 + \frac{var(log(y))}{var(log(x))} - 2\sqrt{\frac{var(log(y))}{var(log(x))}} \frac{cov(log(x), log(y))}{\sqrt{var(log(x))var(log(y))}}\right)$$
+}
+\pause
+\item The identify the SMA slope estimate $\beta$ and the correlation:
+\small{
+$$=var(log(x)) (1 + \beta^2 - 2\beta|r|)$$
+}
+\pause
+\item They drop the unnecessary term to get $\phi$:
+\small{
+$$\phi(log(x), log(y)) = (1 + \beta^2 - 2\beta|r|)$$
+}
+\end{itemize}
+\end{frame}
 
+\begin{frame}{Benefits of proportionality}
+\begin{itemize}
+\item Derived from Aitchison's log-ratio variance
+\bigskip
+\item Composed of two established metrics of association
+\bigskip
+\item However, $\phi$ is not symmetric like $\rho$
+\end{itemize}
 \end{frame}
 
 
 \begin{frame}{When can I mostly ignore the relative nature of my data?}
 \end{frame}
+
 \end{document}

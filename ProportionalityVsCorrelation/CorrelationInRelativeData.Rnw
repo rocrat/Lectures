@@ -181,7 +181,19 @@ Yes, I am going to show a slide show during a slide show.\\
 \href{http://www.slideshare.net/AustralianBioinformatics/dont-correlate-proportions}{David Lovell scaring you about correlating proportions}
 \end{frame}
 
+\begin{frame}{Correlations on Relative Data}
+\begin{center}
+\includegraphics[scale=.4]{./Figures/relativeVsAbsolute}
+\end{center}
+Correlations on relative data tell us absolutely nothing about the relationship between the absolute abundances.
+\end{frame}
+
+
 \begin{frame}{The proposed alternative to correlation}
+
+\end{frame}
+
+\begin{frame}{Proportionality is more consistent}
 
 \end{frame}
 

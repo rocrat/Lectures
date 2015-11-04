@@ -1,7 +1,7 @@
 .Rproj.user
 .Rhistory
 .RData
-.tex
-*\.log
-*\.gz
-*\.nav
+*.tex
+*.log
+*.gz
+*.nav

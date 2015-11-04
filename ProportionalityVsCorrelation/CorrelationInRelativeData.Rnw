@@ -1,11 +1,14 @@
-\documentclass{beamer}
+\documentclass[aspectratio=169]{beamer}
 \usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{tikz}
+\usepackage{epstopdf}
 \usetikzlibrary{shapes.geometric, arrows}
 \usepackage{verbatim}
 \definecolor{UAred}{RGB}{204,0,51}
 \definecolor{UAblue}{RGB}{0,51,102}
+%\usepackage[colorlinks=true]{hyperref}
+\newcommand{\MYhref}[3][blue]{\href{#2}{\color{#1}{#3}}}%
 
 \useoutertheme{infolines}%makes informative footer
 \usetheme{Pittsburgh}
@@ -92,11 +95,11 @@ Compositional data analysis: Theory and applications p193-207 (2011)}
 \begin{frame}{Is \emph{my} data relative??}
 Relative data arises naturally in many biological measurements:
 \begin{itemize}
-\item Is your sample oa fixed size?
+\item Is your sample a fixed size?
   \begin{itemize}
   \item 1 gram of tissue
   \item 1 $\mu$g of total RNA
-  \item 1 $\mu$g of metagenomic DNA
+  \item 1 $\mu$g of meta-genomic DNA
   \item 1 mL of blood, etc.
   \end{itemize}
 \pause
@@ -131,7 +134,9 @@ In certain cases it doesn't matter much but in others it matters a lot.
 \end{frame}
 
 \begin{frame}{The `Omics Imp'}
+\begin{center}
 \includegraphics[scale=.4]{./Figures/OmicsImp}\\
+\end{center}
 \begin{itemize}
 \item On the left the imp tallies sequences as they are produced in a fixed time period
 \item On the right the imp counts the sequences in some fixed size bucket
@@ -175,13 +180,13 @@ Take a 3 component example: $Total = c_1 + c_2 + c_3$
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Correlations on Relative Data}
+\begin{frame}{David Lovell's Take}
 Yes, I am going to show a slide show during a slide show.\\
 \bigskip
-\href{http://www.slideshare.net/AustralianBioinformatics/dont-correlate-proportions}{David Lovell scaring you about correlating relative data}
+\MYhref[UAblue]{http://www.slideshare.net/AustralianBioinformatics/dont-correlate-proportions}{David Lovell scaring you about correlating relative data}
 \end{frame}
 
-\begin{frame}{A little background on the proposed alternative:\\ Model 2 regression}
+\begin{frame}{A little background before the proposed alternative:\\ Model 2 regression}
 Also known as Standardized Major Axis (SMA) Regression 
 \bigskip
 \begin{itemize}
@@ -242,12 +247,41 @@ $$\phi(log(x), log(y)) = (1 + \beta^2 - 2\beta|r|)$$
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Proportionality is more consistent}
-
+\begin{frame}{Yeast Example}
+\begin{center}
+\includegraphics[scale=.38]{./Figures/YeastExample}
+\end{center}
 \end{frame}
 
+\begin{frame}{Yeast Example}
+\begin{center}
+\includegraphics[scale=.41]{./Figures/YeastResults}
+\end{center}
+\end{frame}
+
+% \begin{frame}{Performance of $\phi$}
+% \includegraphics[scale=.4]{./Figures/RelAbund}
+% \end{frame}
 
 \begin{frame}{When can I mostly ignore the relative nature of my data?}
+Relative data aren't always a problem:
+\bigskip
+\begin{itemize}
+\item Components of interest are relatively small parts of mixture samples that remain constant in size
+\bigskip
+\item Only using univariate statistics (e.g. variance)
+\bigskip
+\item log-transformation can \emph{help} (due to the properties of the log)
+\end{itemize}
+\pause
+\bigskip
+Do you feel lucky? -\emph{Dirty Harry}
+\end{frame}
+
+\begin{frame}{Questions?}
+\begin{center}
+\includegraphics[scale=.9]{./Figures/PercentProblem}
+\end{center}
 \end{frame}
 
 \end{document}

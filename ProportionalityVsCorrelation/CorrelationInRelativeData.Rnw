@@ -147,14 +147,13 @@ In certain cases it doesn't matter much but in others it matters a lot.
 \end{frame}
 
 \begin{frame}{Relative data can be misleading}
-Example 1.\\
 \begin{center}
 \includegraphics[scale=.4]{./Figures/Zconstant}
 \end{center}
 \end{frame}
 
 \begin{frame}{Relative data can be misleading}
-Example 2.\\
+
 \begin{center}
 \includegraphics[scale=.4]{./Figures/AEconstant}
 \end{center}
@@ -280,7 +279,7 @@ Do you feel lucky? -\emph{Dirty Harry}
 
 \begin{frame}{Questions?}
 \begin{center}
-\includegraphics[scale=.9]{./Figures/PercentProblem}
+\includegraphics[scale=.8]{./Figures/PercentProblem}
 \end{center}
 \end{frame}
 
